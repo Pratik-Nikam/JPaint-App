@@ -10,6 +10,7 @@ public enum EventName {
 	CHOOSE_PRIMARY_COLOR {
 		@Override
 		public String toString() {
+			System.out.println("HELOoooooooooooooooo");
 			return "CHOOSE PRIMARY COLOR";
 		}
 	},

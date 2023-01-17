@@ -1,5 +1,6 @@
 package main;
 
+import controller.ClickHandler;
 import controller.IJPaintController;
 import controller.JPaintController;
 import model.ShapeColor;
@@ -15,9 +16,10 @@ import java.awt.*;
 import java.util.Collection;
 import java.util.EnumMap;
 
-public class Main {
+public class Main  {
     public static void main(String[] args){
         PaintCanvas paintCanvas = new PaintCanvas();
+        paintCanvas.addMouseListener(new ClickHandler());
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
