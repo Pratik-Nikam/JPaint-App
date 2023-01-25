@@ -1,4 +1,4 @@
-package controller;
+package com.handler;
 
 import view.gui.PaintCanvas;
 
@@ -9,6 +9,19 @@ import java.awt.event.MouseEvent;
 public class ClickHandler extends MouseAdapter {
     CoOrdinatesPoints startPoint;
     CoOrdinatesPoints endPoint;
+    PaintCanvas canvas;
+
+
+    static Graphics2D graphics2d;
+
+    public ClickHandler(PaintCanvas canvas)
+    {
+        this.canvas = canvas;
+    }
+
+    public void DrawShape(PaintCanvas canvas) {
+        //graphics2d = canvas.getGraphics2D();
+    }
 
     public void mousePressed(MouseEvent e) {
         startPoint = new CoOrdinatesPoints();
@@ -30,13 +43,18 @@ public class ClickHandler extends MouseAdapter {
         int width = Math.abs(startPoint.X - endPoint.X);
         int height = Math.abs(startPoint.Y - endPoint.Y);
 
-        System.out.print("  Height" + height);
+        System.out.print("  Height" + height + "\n");
 
-        System.out.print("   width" + width );
+        System.out.print("   width" + width + "\n");
 
 
 //        PaintCanvas canvas = new PaintCanvas();
-//        canvas.getGraphics().drawRect(startPoint.X,startPoint.Y,width,height);
+        System.out.println("***********"+canvas.getGraphics2d());
+
+        //canvas.drawRectangleShape(startPoint.X, startPoint.Y, width,height);
+
+//        PaintCanvas canvas = new PaintCanvas();
+          canvas.getGraphics().drawRect(startPoint.X,startPoint.Y,width,height);
 
         //new Graphics().drawRect();
 
@@ -48,9 +66,9 @@ public class ClickHandler extends MouseAdapter {
 
     }
 
-    void drawRectangles (Graphics g){
+    public void drawRectangles (Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawLine(startPoint.X, startPoint.Y, endPoint.X, endPoint.Y);
+       // g2d.drawLine(startPoint.X, startPoint.Y);
 
     }
 
