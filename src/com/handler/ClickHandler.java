@@ -5,11 +5,17 @@ import view.gui.PaintCanvas;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClickHandler extends MouseAdapter {
-    CoOrdinatesPoints startPoint;
-    CoOrdinatesPoints endPoint;
+    //    CoOrdinatesPoints startPoint;
+//    CoOrdinatesPoints endPoint;
     PaintCanvas canvas;
+    Point point = new Point();
+
+    List<Integer> coordinates = new ArrayList<>();
+
 
 
     static Graphics2D graphics2d;
@@ -24,47 +30,50 @@ public class ClickHandler extends MouseAdapter {
     }
 
     public void mousePressed(MouseEvent e) {
-        startPoint = new CoOrdinatesPoints();
-        startPoint.X = e.getX();
-        startPoint.Y = e.getY();
-        System.out.print("presses   " + startPoint.X + "  " + startPoint.Y) ;
+        point.setStartPointX1(e.getX());
+        point.setStartPointY1(e.getY());
+
+        coordinates.add(e.getX());
+        coordinates.add(e.getY());
+
+        System.out.print("presses   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
     }
 
-    public void mouseReleased(MouseEvent e) {
-        endPoint = new CoOrdinatesPoints();
-
-        endPoint.X = e.getX();
-        endPoint.Y = e.getY();
-
-        System.out.print("  released" + endPoint.X + "  " + endPoint.Y);
-
-        System.out.print("   presses" + startPoint.X + "  " + startPoint.Y) ;
-
-        int width = Math.abs(startPoint.X - endPoint.X);
-        int height = Math.abs(startPoint.Y - endPoint.Y);
-
-        System.out.print("  Height" + height + "\n");
-
-        System.out.print("   width" + width + "\n");
-
-
-//        PaintCanvas canvas = new PaintCanvas();
-        System.out.println("***********"+canvas.getGraphics2d());
-
-        //canvas.drawRectangleShape(startPoint.X, startPoint.Y, width,height);
-
-//        PaintCanvas canvas = new PaintCanvas();
-          canvas.getGraphics().drawRect(startPoint.X,startPoint.Y,width,height);
-
-        //new Graphics().drawRect();
-
-
-
-
-        //graphics2d.drawRect(7, 8, 210, 410);
-
-
-    }
+//    public void mouseReleased(MouseEvent e) {
+//        endPoint = new CoOrdinatesPoints();
+//
+//        endPoint.X = e.getX();
+//        endPoint.Y = e.getY();
+//
+//        System.out.print("  released" + endPoint.X + "  " + endPoint.Y);
+//
+//        System.out.print("   presses" + startPoint.X + "  " + startPoint.Y) ;
+//
+//        int width = Math.abs(startPoint.X - endPoint.X);
+//        int height = Math.abs(startPoint.Y - endPoint.Y);
+//
+//        System.out.print("  Height" + height + "\n");
+//
+//        System.out.print("   width" + width + "\n");
+//
+//
+////        PaintCanvas canvas = new PaintCanvas();
+//        System.out.println("***********"+canvas.getGraphics2d());
+//
+//        //canvas.drawRectangleShape(startPoint.X, startPoint.Y, width,height);
+//
+////        PaintCanvas canvas = new PaintCanvas();
+//          canvas.getGraphics().drawRect(startPoint.X,startPoint.Y,width,height);
+//
+//        //new Graphics().drawRect();
+//
+//
+//
+//
+//        //graphics2d.drawRect(7, 8, 210, 410);
+//
+//
+//    }
 
     public void drawRectangles (Graphics g){
         Graphics2D g2d = (Graphics2D) g;
