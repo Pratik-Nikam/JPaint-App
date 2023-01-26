@@ -14,6 +14,7 @@ public class PaintCanvas extends JComponent {
     }
 
     Graphics2D graphics2d;
+/*
     @Override
     public void paint(Graphics g) {
         PaintCanvas p = new PaintCanvas();
@@ -37,6 +38,7 @@ public class PaintCanvas extends JComponent {
         graphics2d.setColor(Color.BLACK);
         graphics2d.drawRect(7, 8, 210, 410);
     }
+*/
 
     public void drawRectangleShape(int X, int Y, int width, int height)
     {
