@@ -39,41 +39,36 @@ public class ClickHandler extends MouseAdapter {
         System.out.print("presses   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
     }
 
-//    public void mouseReleased(MouseEvent e) {
-//        endPoint = new CoOrdinatesPoints();
-//
-//        endPoint.X = e.getX();
-//        endPoint.Y = e.getY();
-//
-//        System.out.print("  released" + endPoint.X + "  " + endPoint.Y);
-//
-//        System.out.print("   presses" + startPoint.X + "  " + startPoint.Y) ;
-//
-//        int width = Math.abs(startPoint.X - endPoint.X);
-//        int height = Math.abs(startPoint.Y - endPoint.Y);
-//
-//        System.out.print("  Height" + height + "\n");
-//
-//        System.out.print("   width" + width + "\n");
-//
-//
-////        PaintCanvas canvas = new PaintCanvas();
-//        System.out.println("***********"+canvas.getGraphics2d());
-//
-//        //canvas.drawRectangleShape(startPoint.X, startPoint.Y, width,height);
-//
-////        PaintCanvas canvas = new PaintCanvas();
-//          canvas.getGraphics().drawRect(startPoint.X,startPoint.Y,width,height);
-//
-//        //new Graphics().drawRect();
-//
-//
-//
-//
-//        //graphics2d.drawRect(7, 8, 210, 410);
-//
-//
-//    }
+    public void mouseReleased(MouseEvent e) {
+        point.setEndPointX2(e.getX());
+        point.setEndPointY2(e.getY());
+        coordinates.add(e.getX());
+        coordinates.add(e.getY());
+        int width = Math.abs(coordinates.get(0) - coordinates.get(2));
+        int height = Math.abs(coordinates.get(1) - coordinates.get(3));
+
+        System.out.print("  Height" + height + "\n");
+
+        System.out.print("   width" + width + "\n");
+
+
+//        PaintCanvas canvas = new PaintCanvas();
+        System.out.println("***********"+canvas.getGraphics2d());
+
+        //canvas.drawRectangleShape(startPoint.X, startPoint.Y, width,height);
+
+//        PaintCanvas canvas = new PaintCanvas();
+          canvas.getGraphics().drawRect(coordinates.get(0),coordinates.get(1),width,height);
+
+        //new Graphics().drawRect();
+
+
+
+
+        //graphics2d.drawRect(7, 8, 210, 410);
+
+
+    }
 
     public void drawRectangles (Graphics g){
         Graphics2D g2d = (Graphics2D) g;
