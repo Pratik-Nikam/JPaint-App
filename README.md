@@ -3,9 +3,10 @@
 This project aims toward building JPaint Application using Java. Purpose of this project is learn and implement a application using Solid Principle and Design Patterns.
 ---
 
-### Getting Started
+### Sprint Details
 ---
 Project will be carried out in total 4 Sprints
+1. Jan 26
 
 ### Programming Language and Frameowork
 ---
@@ -16,8 +17,8 @@ Project will be carried out in total 4 Sprints
 ---
 * **Sprint 1**
 
-1. Draw Rectangle 
-2. Undo Redo
+1. Draw Rectangle. 
+2. Undo and Redo operations.
 
 The class is creating the object of static factory according to the shapes and then adding the 
 shapes into linked list. After that, class is calling listener using update method to draw shapes on canvas.
