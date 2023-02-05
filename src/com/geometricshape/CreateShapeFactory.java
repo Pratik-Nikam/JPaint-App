@@ -14,7 +14,14 @@ public class CreateShapeFactory implements IshapeFactory {
 		if(shapeType.equals(ShapeType.RECTANGLE)) {
 			shape=new Rectangle(properties);
 			System.out.println(" Rectangle Drawn ");
+		}else if(shapeType.equals(ShapeType.TRIANGLE)) {
+			shape=new Triangle(properties);
+			System.out.println(" Triangle Drawn");
+		}else if(shapeType.equals(ShapeType.ELLIPSE)) {
+			shape=new Ellipse(properties);
+			System.out.println(" Elipse Drawn");
 		}
+
 		return shape;
 	}
 }

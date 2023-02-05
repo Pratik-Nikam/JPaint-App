@@ -24,7 +24,7 @@ public class ShapeListStorage extends StorageList {
 	        graphics2d.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 	        
 	        list.add(shape);
-	       
+
 	        
 			for(IShape s: list) {
 				System.out.println("Inside List Loop " );
@@ -42,6 +42,7 @@ public class ShapeListStorage extends StorageList {
 		
 		
 		for(IShape s: list) {
+			System.out.println("ssssssssssssss" + s);
 			s.Draw(canvas);
 		}
 		System.out.println(list.size());

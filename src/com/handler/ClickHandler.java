@@ -4,6 +4,7 @@ import com.command.CreateShapeCommand;
 import com.command.Icommand;
 import com.command.MainStorage;
 import com.geometricshape.shapeProperties;
+import com.model.MouseMode;
 import com.model.ShapeColor;
 import com.model.ShapeShadingType;
 import com.model.ShapeType;
@@ -51,6 +52,8 @@ public class ClickHandler extends MouseAdapter {
     public void mouseReleased(MouseEvent e) {
         point.setEndPointX2(e.getX());
         point.setEndPointY2(e.getY());
+
+
         if(coordinates.size() == 2){
             coordinates.add(e.getX());
             coordinates.add(e.getY());}
@@ -85,15 +88,30 @@ public class ClickHandler extends MouseAdapter {
         System.out.print("  Height" + height + "\n");
 
         System.out.print("   width" + width + "\n");
+
+        System.out.print("pressesStart   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
+        System.out.print("presses end   " + point.getEndPointX2() + "  " + point.getEndPointY2()) ;
+
+
+        System.out.println(appState.getActiveMouseMode() + "mouse mode");
+
+        if(appState.getActiveMouseMode().equals(MouseMode.DRAW)) {
         ShapeShadingType shade=appState.getActiveShapeShadingType();
         ShapeColor shapeColor=appState.getActivePrimaryColor();
         ShapeType shapetype=appState.getActiveShapeType();
         shapeProperties properties=new shapeProperties(point,shade,shapeColor,shapetype);
         Icommand C= new CreateShapeCommand(shapedata, properties, appState);
+
+        System.out.println(shapetype + "  shapetype   " + shade + "  shade  "+ "properties" +properties +  " Color " + shapeColor);
         try {
             C.run();
         } catch (IOException e1) {
             e1.printStackTrace();
         }}
+            
+        }
+
     }
+
+
 

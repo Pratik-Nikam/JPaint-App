@@ -10,6 +10,8 @@ public class shapeProperties {
 	Point point;
 	private int x;
 	private int y;
+	private  int x1;
+	private  int y1;
 	private int width;
 	private int height;
 	ShapeShadingType shade;
@@ -21,6 +23,8 @@ public class shapeProperties {
 		super();
 		this.x = x;
 		this.y = y;
+		this.x1 = x1;
+		this.y1 = y1;
 		this.width = width;
 		this.height = height;
 	}
@@ -31,6 +35,8 @@ public class shapeProperties {
 		this.point = point;
 		this.x = point.getStartPointX1();
 		this.y = point.getStartPointY1();
+		this.x1 = point.getEndPointX2();
+		this.y1 = point.getEndPointY2();
 		this.width =point.getWidth();
 		this.height = point.getHeight();
 		this.shade=shade;
@@ -52,12 +58,27 @@ public class shapeProperties {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+
+	public void setX1(int x1) {
+		this.x1 = x1;
+	}
+	public void setY1(int y1) {
+		this.y1 = y1;
+	}
 	public int getX() {
 		return x;
 	}
 	public int getY() {
 		return y;
 	}
+
+	public int getX1() {
+		return x1;
+	}
+	public int getY1() {
+		return y1;
+	}
+
 	public int getWidth() {
 		return width;
 	}
