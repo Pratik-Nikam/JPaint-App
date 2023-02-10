@@ -4,6 +4,8 @@ import java.io.IOException;
 
 public interface Icommand {
 	void run() throws IOException;
-	
 
+	void undo();
+
+	void redo();
 }

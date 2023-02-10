@@ -16,15 +16,12 @@ public class shapeProperties {
 	private int height;
 	ShapeShadingType shade;
 	ShapeColor shapecolor;
-	
 	ShapeType shapeType;
 	
 	public shapeProperties(int x, int y, int width, int height) {
 		super();
 		this.x = x;
 		this.y = y;
-		this.x1 = x1;
-		this.y1 = y1;
 		this.width = width;
 		this.height = height;
 	}
@@ -42,29 +39,8 @@ public class shapeProperties {
 		this.shade=shade;
 		this.shapecolor=shapecolor;
 		this.shapeType=shapeType;
-		
-		
-	}
-	
-	public void setX(int x) {
-		this.x = x;
-	}
-	public void setY(int y) {
-		this.y = y;
-	}
-	public void setWidth(int width) {
-		this.width = width;
-	}
-	public void setHeight(int height) {
-		this.height = height;
 	}
 
-	public void setX1(int x1) {
-		this.x1 = x1;
-	}
-	public void setY1(int y1) {
-		this.y1 = y1;
-	}
 	public int getX() {
 		return x;
 	}
@@ -85,17 +61,9 @@ public class shapeProperties {
 	public int getHeight() {
 		return height;
 	}
-	
-	public ShapeShadingType getShade() {
-		return shade;
-		
-	}
+
 	public ShapeColor getColor() {
 		return shapecolor;
-
-	}
-	public ShapeType getType() {
-		return shapeType;
 
 	}
 }

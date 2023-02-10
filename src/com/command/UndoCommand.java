@@ -9,4 +9,14 @@ public class UndoCommand implements Icommand {
 	public void run() throws IOException {
 		CommandHistory.undo();
 	}
+
+	@Override
+	public void undo() {
+
+	}
+
+	@Override
+	public void redo() {
+
+	}
 }

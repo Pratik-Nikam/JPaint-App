@@ -15,7 +15,6 @@ public class Ellipse extends shape {
 
 	@Override
 	public void Draw(PaintCanvas canvas) {
-		// TODO Auto-generated method stub
 		Graphics2D graphics2d = canvas.getGraphics2D();
 		graphics2d.setColor(Color.BLUE);
 		graphics2d.fillOval(properties.getX(), properties.getY(), properties.getWidth(),properties.getHeight());
@@ -24,9 +23,11 @@ public class Ellipse extends shape {
 	
 	@Override
 	public ShapeType ShapeName() {
-		// TODO Auto-generated method stub
 		return ShapeType.ELLIPSE;
 	}
-	
 
+	@Override
+	public shapeProperties getProperties() {
+		return properties;
+	}
 }

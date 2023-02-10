@@ -51,8 +51,12 @@ public class Triangle extends shape {
 		// TODO Auto-generated method stub
 		return ShapeType.TRIANGLE;
 	}
-	
-	
+
+	@Override
+	public shapeProperties getProperties() {
+		return properties;
+	}
+
 
 }
 

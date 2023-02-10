@@ -62,6 +62,26 @@ public class Point {
             this.height = height;
         }
 
+    public int getY1() {
+        // TODO Auto-generated method stub
+        return startPointY1;
     }
+
+    public int getX1() {
+        // TODO Auto-generated method stub
+        return startPointX1;
+    }
+    public int getY2() {
+        // TODO Auto-generated method stub
+        return endPointY2;
+    }
+
+    public int getX2() {
+        // TODO Auto-generated method stub
+        return endPointX2;
+    }
+
+
+}
 
 

@@ -3,6 +3,7 @@ package com.handler;
 import com.command.CreateShapeCommand;
 import com.command.Icommand;
 import com.command.MainStorage;
+import com.command.ShapSelect;
 import com.geometricshape.shapeProperties;
 import com.model.MouseMode;
 import com.model.ShapeColor;
@@ -25,75 +26,88 @@ public class ClickHandler extends MouseAdapter {
     IApplicationState appState;
     List<Integer> coordinates = new ArrayList<>();
     MainStorage shapedata;
-
-    public ClickHandler(PaintCanvas canvas,IApplicationState appState, MainStorage shapedata)
+    MainStorage shapeselectdata;
+    public ClickHandler(PaintCanvas canvas,IApplicationState appState, MainStorage shapedata, MainStorage shapeselectdata)
     {
         super();
         this.canvas = canvas;
         this.appState = appState;
         this.shapedata = shapedata;
+        this.shapeselectdata = shapeselectdata;
     }
 
     public void mousePressed(MouseEvent e) {
+//        System.out.println(e.getX() + " " +  e.getY() + "  points initial");
+
         point.setStartPointX1(e.getX());
         point.setStartPointY1(e.getY());
-        if(coordinates.size() == 0 )
-        {coordinates.add(e.getX());
-        coordinates.add(e.getY());}
-        else {
-            if(coordinates.get(0) != null && coordinates.get(1) != null)
-            {coordinates.set(0, e.getX());
-            coordinates.set(1,e.getY());}
-        }
+//        if(coordinates.size() == 0 )
+//        {coordinates.add(e.getX());
+//        coordinates.add(e.getY());}
+//        else {
+//            if(coordinates.get(0) != null && coordinates.get(1) != null)
+//            {coordinates.set(0, e.getX());
+//            coordinates.set(1,e.getY());}
+//        }
 
-        System.out.print("presses   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
+        System.out.print("start point X1, Y1   " + point.getStartPointX1() + "  " + point.getStartPointY1() + " ") ;
     }
 
     public void mouseReleased(MouseEvent e) {
         point.setEndPointX2(e.getX());
         point.setEndPointY2(e.getY());
 
+        System.out.print("presses ending  " + point.getEndPointX2() + "  " + point.getEndPointY2()) ;
+        System.out.println("--------------BEFORE CALCULATION -------");
+        int startX = Math.min(point.getStartPointX1(), point.getEndPointX2());
+        int endX = Math.max(point.getStartPointX1(), point.getEndPointX2());
+        int startY = Math.min(point.getStartPointY1(), point.getEndPointY2());
+        int endY = Math.max(point.getStartPointY1(), point.getEndPointY2());
 
-        if(coordinates.size() == 2){
-            coordinates.add(e.getX());
-            coordinates.add(e.getY());}
-        else {
-            if(coordinates.get(2) != null && coordinates.get(3) != null)
-            {coordinates.set(2, e.getX());
-            coordinates.set(3,e.getY());
+        int width = endX - startX;
+        int height = endY - startY;
+        point.setStartPointX1(startX);
+        point.setStartPointY1(startY);
+        point.setEndPointX2(endX);
+        point.setEndPointY2(endY);
 
-            }
-        }
 
-        if (coordinates.get(2) < coordinates.get(0)){
-            int t = coordinates.get(0);
-            coordinates.set(0, coordinates.get(2));
-            coordinates.set(2, t);
-            point.setStartPointX1(coordinates.get(2));
-            point.setEndPointX2(coordinates.get(0));
-        }
-
-        if (coordinates.get(3) < coordinates.get(1)){
-            int t = coordinates.get(1);
-            coordinates.set(1, coordinates.get(3));
-            coordinates.set(3,t);
-            point.setStartPointY1(coordinates.get(3));
-            point.setEndPointY2(coordinates.get(1));
-        }
-        System.out.println(coordinates + "========================");
-        int width = Math.abs(coordinates.get(0) - coordinates.get(2));
+//        if(coordinates.size() == 2){
+//            coordinates.add(e.getX());
+//            coordinates.add(e.getY());}
+//        else {
+//            if(coordinates.get(2) != null && coordinates.get(3) != null)
+//            {coordinates.set(2, e.getX());
+//            coordinates.set(3,e.getY());
+//
+//            }
+//        }
+//
+//        if (coordinates.get(2) < coordinates.get(0)){
+//            int t = coordinates.get(0);
+//            coordinates.set(0, coordinates.get(2));
+//            coordinates.set(2, t);
+//            point.setStartPointX1(coordinates.get(2));
+//            point.setEndPointX2(coordinates.get(0));
+//        }
+//
+//        if (coordinates.get(3) < coordinates.get(1)){
+//            int t = coordinates.get(1);
+//            coordinates.set(1, coordinates.get(3));
+//            coordinates.set(3,t);
+//            point.setStartPointY1(coordinates.get(3));
+//            point.setEndPointY2(coordinates.get(1));
+//        }
+//        System.out.println(coordinates + "========================");
+//        int width = Math.abs(coordinates.get(0) - coordinates.get(2));
         point.setWidth(width);
-        int height = Math.abs(coordinates.get(1) - coordinates.get(3));
         point.setHeight(height);
         System.out.print("  Height" + height + "\n");
 
         System.out.print("   width" + width + "\n");
-
-        System.out.print("pressesStart   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
-        System.out.print("presses end   " + point.getEndPointX2() + "  " + point.getEndPointY2()) ;
-
-
-        System.out.println(appState.getActiveMouseMode() + "mouse mode");
+        System.out.println("--------------AFTER CALCULATION -------");
+        System.out.print("start point   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
+        System.out.print("end point   " + point.getEndPointX2() + "  " + point.getEndPointY2()) ;
 
         if(appState.getActiveMouseMode().equals(MouseMode.DRAW)) {
         ShapeShadingType shade=appState.getActiveShapeShadingType();
@@ -102,14 +116,28 @@ public class ClickHandler extends MouseAdapter {
         shapeProperties properties=new shapeProperties(point,shade,shapeColor,shapetype);
         Icommand C= new CreateShapeCommand(shapedata, properties, appState);
 
-        System.out.println(shapetype + "  shapetype   " + shade + "  shade  "+ "properties" +properties +  " Color " + shapeColor);
         try {
             C.run();
         } catch (IOException e1) {
             e1.printStackTrace();
-        }}
-            
+        }} else if ((appState.getActiveMouseMode().equals(MouseMode.SELECT))) {
+
+            Icommand C = new ShapSelect(shapedata, point, shapeselectdata);
+
+            try {
+                C.run();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
         }
+
+        }
+
+
+
+            
+
 
     }
 
