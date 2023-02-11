@@ -2,7 +2,7 @@ package com.main;
 
 import com.command.ShapeSelectListStorage;
 import com.handler.ClickHandler;
-import com.command.MainStorage;
+import com.command.IMainStorage;
 import com.command.ShapeListStorage;
 import com.controller.IJPaintController;
 import com.controller.JPaintController;
@@ -19,8 +19,8 @@ import java.util.ArrayList;
 public class Main  {
     public static void main(String[] args){
         PaintCanvas paintCanvas = new PaintCanvas();
-        MainStorage shapedata= new ShapeListStorage(new ArrayList<IShape>(), paintCanvas);
-        MainStorage shapeselectdata = new ShapeSelectListStorage(new ArrayList<IShape>(), paintCanvas);
+        IMainStorage shapedata= new ShapeListStorage(new ArrayList<IShape>(), paintCanvas);
+        IMainStorage shapeselectdata = new ShapeSelectListStorage(new ArrayList<IShape>(), paintCanvas);
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);

@@ -15,7 +15,7 @@ public class ShapeListStorage extends StorageList {
 		super(list, canvas);
 	}
 	
-	public void addshape(IShape shape) {
+	public void addShape(IShape shape) {
 		if(!contains(shape)) {
 			Graphics2D graphics2d = canvas.getGraphics2D();
 			graphics2d.setColor(Color.WHITE);
@@ -30,7 +30,7 @@ public class ShapeListStorage extends StorageList {
 		}
     }
 	
-	public void removeshape(IShape shape) {
+	public void removeShape(IShape shape) {
 		list.remove(shape);
 		Graphics2D graphics2d = canvas.getGraphics2D();
 		graphics2d.setColor(Color.WHITE);

@@ -9,7 +9,7 @@
 
 
 
-public class StorageList implements MainStorage {
+public class StorageList implements IMainStorage {
 	protected ArrayList<IShape> list;
 	protected PaintCanvas canvas;
 	
@@ -19,25 +19,20 @@ public class StorageList implements MainStorage {
 		this.canvas = canvas;
 	}
 
-	
-
 	@Override
-	public void addshape(IShape shape) {
-		// TODO Auto-generated method stub
+	public void addShape(IShape shape) {
 		list.add(shape);
 
 	}
 
 	@Override
-	public void removeshape(IShape shape) {
-		// TODO Auto-generated method stub
+	public void removeShape(IShape shape) {
 		list.remove(shape);
 
 	}
 
 	@Override
 	public boolean contains(IShape shape){
-		// TODO Auto-generated method stub
 		for(IShape s:list) {
 			if(shape.equals(s)) {
 				return true;
@@ -48,8 +43,7 @@ public class StorageList implements MainStorage {
 	}
 
 	@Override
-	public void addlist(MainStorage clonelist) {
-		// TODO Auto-generated method stub
+	public void addToList(IMainStorage clonelist) {
 		ArrayList<IShape> a=clonelist.list();
 		list.clear();
 		for(IShape shape:a) {
@@ -60,7 +54,6 @@ public class StorageList implements MainStorage {
 
 	@Override
 	public ArrayList<IShape> list() {
-		// TODO Auto-generated method stub
 		ArrayList<IShape> copy=new ArrayList<IShape>();
 		for(IShape a:list) {
 			copy.add(a);
@@ -70,14 +63,11 @@ public class StorageList implements MainStorage {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
 		list.clear();
-		
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return list.size();
 	}
 

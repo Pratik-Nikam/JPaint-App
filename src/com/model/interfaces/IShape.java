@@ -9,4 +9,9 @@ public interface IShape {
     public ShapeType ShapeName();
     public shapeProperties getProperties();
 
+    void setProperties(shapeProperties properties);
+
+    void positiveDisplacement(int dx, int dy);
+
+    void negativeDisplacement(int dx, int dy);
 }

@@ -1,9 +1,6 @@
 package com.handler;
 
-import com.command.CreateShapeCommand;
-import com.command.Icommand;
-import com.command.MainStorage;
-import com.command.ShapSelect;
+import com.command.*;
 import com.geometricshape.shapeProperties;
 import com.model.MouseMode;
 import com.model.ShapeColor;
@@ -12,7 +9,6 @@ import com.model.ShapeType;
 import com.model.interfaces.IApplicationState;
 import com.view.gui.PaintCanvas;
 
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -25,10 +21,10 @@ public class ClickHandler extends MouseAdapter {
     Point point = new Point();
     IApplicationState appState;
     List<Integer> coordinates = new ArrayList<>();
-    MainStorage shapedata;
-    MainStorage shapeselectdata;
-    public ClickHandler(PaintCanvas canvas,IApplicationState appState, MainStorage shapedata, MainStorage shapeselectdata)
-    {
+    IMainStorage shapedata;
+    IMainStorage shapeselectdata;
+
+    public ClickHandler(PaintCanvas canvas, IApplicationState appState, IMainStorage shapedata, IMainStorage shapeselectdata) {
         super();
         this.canvas = canvas;
         this.appState = appState;
@@ -50,16 +46,16 @@ public class ClickHandler extends MouseAdapter {
 //            coordinates.set(1,e.getY());}
 //        }
 
-        System.out.print("start point X1, Y1   " + point.getStartPointX1() + "  " + point.getStartPointY1() + " ") ;
+        System.out.print("start point X1, Y1   " + point.getStartPointX1() + "  " + point.getStartPointY1() + " ");
     }
 
     public void mouseReleased(MouseEvent e) {
         point.setEndPointX2(e.getX());
         point.setEndPointY2(e.getY());
 
-        System.out.print("presses ending  " + point.getEndPointX2() + "  " + point.getEndPointY2()) ;
+        System.out.print("presses ending  " + point.getEndPointX2() + "  " + point.getEndPointY2());
         System.out.println("--------------BEFORE CALCULATION -------");
-        int startX = Math.min(point.getStartPointX1(), point.getEndPointX2());
+        /*int startX = Math.min(point.getStartPointX1(), point.getEndPointX2());
         int endX = Math.max(point.getStartPointX1(), point.getEndPointX2());
         int startY = Math.min(point.getStartPointY1(), point.getEndPointY2());
         int endY = Math.max(point.getStartPointY1(), point.getEndPointY2());
@@ -69,7 +65,7 @@ public class ClickHandler extends MouseAdapter {
         point.setStartPointX1(startX);
         point.setStartPointY1(startY);
         point.setEndPointX2(endX);
-        point.setEndPointY2(endY);
+        point.setEndPointY2(endY);*/
 
 
 //        if(coordinates.size() == 2){
@@ -100,29 +96,26 @@ public class ClickHandler extends MouseAdapter {
 //        }
 //        System.out.println(coordinates + "========================");
 //        int width = Math.abs(coordinates.get(0) - coordinates.get(2));
-        point.setWidth(width);
-        point.setHeight(height);
-        System.out.print("  Height" + height + "\n");
 
-        System.out.print("   width" + width + "\n");
-        System.out.println("--------------AFTER CALCULATION -------");
-        System.out.print("start point   " + point.getStartPointX1() + "  " + point.getStartPointY1()) ;
-        System.out.print("end point   " + point.getEndPointX2() + "  " + point.getEndPointY2()) ;
+        if (appState.getActiveMouseMode().equals(MouseMode.DRAW)) {
+            Point point = getPoints();
 
-        if(appState.getActiveMouseMode().equals(MouseMode.DRAW)) {
-        ShapeShadingType shade=appState.getActiveShapeShadingType();
-        ShapeColor shapeColor=appState.getActivePrimaryColor();
-        ShapeType shapetype=appState.getActiveShapeType();
-        shapeProperties properties=new shapeProperties(point,shade,shapeColor,shapetype);
-        Icommand C= new CreateShapeCommand(shapedata, properties, appState);
+            ShapeShadingType shade = appState.getActiveShapeShadingType();
+            ShapeColor shapeColor = appState.getActivePrimaryColor();
+            ShapeType shapetype = appState.getActiveShapeType();
+            shapeProperties properties = new shapeProperties(point, shade, shapeColor, shapetype);
+            ICommand C = new CreateShapeCommand(shapedata, properties, appState);
 
-        try {
-            C.run();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }} else if ((appState.getActiveMouseMode().equals(MouseMode.SELECT))) {
+            try {
+                C.run();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } else if ((appState.getActiveMouseMode().equals(MouseMode.SELECT))) {
 
-            Icommand C = new ShapSelect(shapedata, point, shapeselectdata);
+            Point point = getPoints();
+
+            ICommand C = new ShapSelect(shapedata, point, shapeselectdata);
 
             try {
                 C.run();
@@ -130,16 +123,50 @@ public class ClickHandler extends MouseAdapter {
                 e1.printStackTrace();
             }
 
-        }
+        } else if (appState.getActiveMouseMode().equals(MouseMode.MOVE)) {
+
+            int dx = point.getEndPointX2() - point.getStartPointX1();
+            int dy = point.getEndPointY2() - point.getStartPointY1();
+            System.out.println("displacement" + dx + " ---" + dy);
+
+            ICommand C1 = new MoveCommand(dx, dy, shapedata, shapeselectdata);
+            try {
+                C1.run();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
 
         }
-
-
-
-            
-
 
     }
+
+
+    public Point getPoints() {
+        int startX = Math.min(point.getStartPointX1(), point.getEndPointX2());
+        int endX = Math.max(point.getStartPointX1(), point.getEndPointX2());
+        int startY = Math.min(point.getStartPointY1(), point.getEndPointY2());
+        int endY = Math.max(point.getStartPointY1(), point.getEndPointY2());
+
+        int width = endX - startX;
+        int height = endY - startY;
+        point.setStartPointX1(startX);
+        point.setStartPointY1(startY);
+        point.setEndPointX2(endX);
+        point.setEndPointY2(endY);
+        point.setWidth(width);
+        point.setHeight(height);
+        System.out.print("  Height" + height + "\n");
+
+        System.out.print("   width" + width + "\n");
+        System.out.println("--------------AFTER CALCULATION -------");
+        System.out.print("start point   " + point.getStartPointX1() + "  " + point.getStartPointY1());
+        System.out.print("end point   " + point.getEndPointX2() + "  " + point.getEndPointY2());
+        return point;
+    }
+
+
+}
 
 
 

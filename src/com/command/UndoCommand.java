@@ -2,7 +2,7 @@ package com.command;
 
 import java.io.IOException;
 
-public class UndoCommand implements Icommand {
+public class UndoCommand implements ICommand {
 	//take shape list
 	
 	@Override
