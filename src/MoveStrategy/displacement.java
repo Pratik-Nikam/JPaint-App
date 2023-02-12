@@ -1,7 +1,7 @@
 package MoveStrategy;
 
 
-import com.model.interfaces.IShape;
+import model.interfaces.IShape;
 
 public class displacement {
 	int dx;

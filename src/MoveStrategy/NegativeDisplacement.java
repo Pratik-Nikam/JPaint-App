@@ -1,7 +1,7 @@
 package MoveStrategy;
 
-import com.geometricshape.shapeProperties;
-import com.model.interfaces.IShape;
+import geometricshape.shapeProperties;
+import model.interfaces.IShape;
 
 public class NegativeDisplacement implements IMoveStrategy {
 
