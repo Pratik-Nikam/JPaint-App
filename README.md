@@ -48,7 +48,7 @@ array list where have handled code to call draw method of that shape object.
 2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-2
 
 * Features
-* 
+
 1. Draw Elipse and Traingle.
 2. Select Shapes.
 3. Move selected shapes.
