@@ -31,7 +31,24 @@ CreateShapeCommand - This  class implements the ICommand Interface and have impl
 Here objects of static factory are created depending on the shapes to be drawn and then add the shape into a 
 array list where have handled code to call draw method of that shape object.
 
+* Sprint 1 Feedback:
+1. Remove .com folder (entire content moved directly inside src)
+2. co-ordinate object removed from click handler
+
+
+* **Sprint 2**
+
+1. Draw Elipse and Traingle.
+2. Select Shapes.
+3. Move selected shapes.
+4. coloured shapes.
+
+I have implemented the above features in sprint 2  and worked on suggestions from sprint 1.
+Design Patterns Used:
+1. Command Pattern
+2. Observer Pattern 
+3. Strategy Pattern (Movement strategy based on displacement)
+
 ## Authors
 
 * **Developers**: Pratik Nikam
-
