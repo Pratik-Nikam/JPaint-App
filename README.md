@@ -17,6 +17,8 @@ Note: I have created feature branch name Sprint-1 for sprint 1 purpose and to ma
 ### Project Features
 ---
 * **Sprint 1**
+* Link: https://github.com/Pratik-Nikam/JPaint-App.git
+        https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-1
 
 1. Draw Rectangle. 
 2. Undo and Redo operations.
