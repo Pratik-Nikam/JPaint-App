@@ -1,3 +1,4 @@
+# RepoLink: https://github.com/Pratik-Nikam/JPaint-App.git
 # JPaint Application (SE-450)
 ---
 This project aims toward building JPaint Application using Java. Purpose of this project is learn and implement a application using Solid Principle and Design Patterns.
@@ -17,8 +18,9 @@ Note: I have created feature branch name Sprint-1 for sprint 1 purpose and to ma
 ### Project Features
 ---
 * **Sprint 1**
-* Link: https://github.com/Pratik-Nikam/JPaint-App.git
-        https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-1
+* Link: 
+1. https://github.com/Pratik-Nikam/JPaint-App.git
+2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-1
 
 1. Draw Rectangle. 
 2. Undo and Redo operations.
@@ -39,7 +41,9 @@ array list where have handled code to call draw method of that shape object.
 
 
 * **Sprint 2**
-
+* Link: 
+1. https://github.com/Pratik-Nikam/JPaint-App.git
+2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-2
 1. Draw Elipse and Traingle.
 2. Select Shapes.
 3. Move selected shapes.
