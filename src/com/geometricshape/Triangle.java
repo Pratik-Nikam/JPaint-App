@@ -2,12 +2,16 @@ package com.geometricshape;
 
 
 import java.awt.*;
+import java.util.EnumMap;
 
+import com.model.ShapeColor;
 import com.model.ShapeType;
+import com.model.setColorMap;
 import com.view.gui.PaintCanvas;
 
 public class Triangle extends shape {
 	private shapeProperties properties;
+	private setColorMap map= new setColorMap();
 	private int[] xCoord=new int[3];
 	private int[] yCoord=new int[3];
 	
@@ -15,34 +19,20 @@ public class Triangle extends shape {
 		super(properties);
 		this.properties = properties;
 
-//		startX1 - 715
-//		StartY1 - 233
-//		endX2 - 917
-//		endY2 - 502
-
-		int startX = properties.getX();
-		int startY = properties.getY();
-		int endX =properties.getX1();
-		int endY = properties.getY1();
-		System.out.println(startX + startY  + endX + endY + "Points ");
-
-		int deltaX =  (startY - endY) / 2;
-		int deltaY =  (endX - startX) / 2;
-
-		xCoord[0] = endX;
-		xCoord[1] = startX - deltaX;
-		xCoord[2] = startX + deltaX;
-
-		yCoord[0] = endY;
-		yCoord[1] = startY - deltaY;
-		yCoord[2] = startY + deltaY;
+		xCoord[0]=properties.getX();
+		xCoord[1]=properties.getX()+properties.getWidth();
+		xCoord[2]=properties.getX();
+		yCoord[0]=properties.getY();
+		yCoord[1]=properties.getY()+properties.getHeight();
+		yCoord[2]=properties.getY()+properties.getHeight();
 	}
 	
 
 	@Override
 	public void Draw(PaintCanvas canvas) {
 		Graphics2D graphics2d = canvas.getGraphics2D();
-		graphics2d.setColor(Color.BLUE);
+		EnumMap<ShapeColor, Color> m=map.getMap();
+		graphics2d.setColor(m.get(properties.getColor()));
 		graphics2d.fillPolygon(xCoord,yCoord,3);
 	}
 
@@ -57,6 +47,18 @@ public class Triangle extends shape {
 		return properties;
 	}
 
+	@Override
+	public void setProperties(shapeProperties properties) {
+		// TODO Auto-generated method stub
+		this.properties=properties;
+		xCoord[0]=properties.getX();
+		xCoord[1]=properties.getX()+properties.getWidth();
+		xCoord[2]=properties.getX();
+		yCoord[0]=properties.getY();
+		yCoord[1]=properties.getY()+properties.getHeight();
+		yCoord[2]=properties.getY()+properties.getHeight();
+
+	}
 
 }
 

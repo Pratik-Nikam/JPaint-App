@@ -1,17 +1,21 @@
 package com.geometricshape;
 
 
+import com.model.ShapeColor;
 import com.model.ShapeType;
+import com.model.interfaces.IApplicationState;
 import com.model.persistence.ApplicationState;
+import com.model.setColorMap;
 import com.view.gui.PaintCanvas;
 
 import java.awt.*;
-
+import java.util.EnumMap;
 
 
 public class Rectangle extends shape{
 
 	private shapeProperties properties;
+	private setColorMap map= new setColorMap();
 
 	public Rectangle(shapeProperties properties) {
 		super(properties);
@@ -21,8 +25,9 @@ public class Rectangle extends shape{
 	@Override
 	public void Draw(PaintCanvas canvas) {
 		Graphics2D graphics2d = canvas.getGraphics2D();
-		graphics2d.setColor(Color.BLUE);
-		System.out.println(properties.getX() + "==" + properties.getY()+ "=="+ properties.getWidth() +"==" + properties.getHeight());
+		EnumMap<ShapeColor, Color> m=map.getMap();
+		graphics2d.setColor(m.get(properties.getColor()));
+		System.out.println("In rect draw method" + properties.getX() + "==" + properties.getY()+ "=="+ properties.getWidth() +"==" + properties.getHeight());
 		graphics2d.fillRect(properties.getX(), properties.getY(), properties.getWidth(),properties.getHeight());
 	}
 
