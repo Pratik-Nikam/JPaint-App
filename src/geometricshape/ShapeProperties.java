@@ -6,7 +6,7 @@ import model.ShapeShadingType;
 import model.ShapeType;
 
 
-public class shapeProperties {
+public class ShapeProperties {
     Point point;
     ShapeShadingType shade;
     ShapeColor shapecolor;
@@ -18,7 +18,7 @@ public class shapeProperties {
     private int width;
     private int height;
 
-    public shapeProperties(int x, int y, int width, int height) {
+    public ShapeProperties(int x, int y, int width, int height) {
         super();
         this.x = x;
         this.y = y;
@@ -27,7 +27,7 @@ public class shapeProperties {
     }
 
 
-    public shapeProperties(Point point, ShapeShadingType shade, ShapeColor shapecolor, ShapeType shapeType) {
+    public ShapeProperties(Point point, ShapeShadingType shade, ShapeColor shapecolor, ShapeType shapeType) {
         super();
         this.point = point;
         this.x = point.getStartPointX1();
@@ -41,6 +41,16 @@ public class shapeProperties {
         this.shapeType = shapeType;
     }
 
+    public ShapeProperties(int x, int y, int width, int height, ShapeShadingType shade, ShapeColor shapecolor, ShapeType shapeType) {
+        this.shade=shade;
+        this.shapecolor=shapecolor;
+        this.shapeType=shapeType;
+        this.x=x;
+        this.y=y;
+        this.width=width;
+        this.height=height;
+
+    }
 
     public int getX() {
         return x;
@@ -78,4 +88,7 @@ public class shapeProperties {
         return shapecolor;
     }
 
+    public ShapeType getType() {
+        return shapeType;
+    }
 }

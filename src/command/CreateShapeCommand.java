@@ -3,7 +3,7 @@ package command;
 
 import geometricshape.CreateShapeFactory;
 import geometricshape.IshapeFactory;
-import geometricshape.shapeProperties;
+import geometricshape.ShapeProperties;
 import model.interfaces.IApplicationState;
 import model.interfaces.IShape;
 
@@ -15,9 +15,9 @@ public class CreateShapeCommand implements ICommand, IUndoable {
     IShape shape;
     IApplicationState appState;
     IMainStorage shapedata;
-    shapeProperties properties;
+    ShapeProperties properties;
 
-    public CreateShapeCommand(IMainStorage shapedata, shapeProperties properties, IApplicationState appState) {
+    public CreateShapeCommand(IMainStorage shapedata, ShapeProperties properties, IApplicationState appState) {
         super();
 
         this.shapedata = shapedata;

@@ -7,7 +7,7 @@ import model.interfaces.IShape;
 
 public class CreateShapeFactory implements IshapeFactory {
 
-	public IShape CreateShape(shapeProperties properties,IApplicationState appState) {
+	public IShape CreateShape(ShapeProperties properties, IApplicationState appState) {
 		IShape shape=null;
 		ShapeType shapeType=appState.getActiveShapeType();
 		

@@ -1,13 +1,13 @@
 package MoveStrategy;
 
-import geometricshape.shapeProperties;
+import geometricshape.ShapeProperties;
 import model.interfaces.IShape;
 
 public class NegativeDisplacement implements IMoveStrategy {
 
 	@Override
 	public void displace(IShape shape, int dx, int dy) {
-		shapeProperties properties=shape.getProperties();
+		ShapeProperties properties=shape.getProperties();
 		int x=properties.getX()-dx;
 		int y=properties.getY()-dy;
 		properties.setX(x);

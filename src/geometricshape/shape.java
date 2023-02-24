@@ -8,15 +8,15 @@ import MoveStrategy.displacement;
 import MoveStrategy.PositiveDisplacement;
 
 public abstract class shape implements IShape{
-	private shapeProperties properties;
+	private ShapeProperties properties;
 
-	public shape(shapeProperties properties) {
+	public shape(ShapeProperties properties) {
 		super();
 		this.properties = properties;
 	}
 
 	@Override
-	public void setProperties(shapeProperties properties) {
+	public void setProperties(ShapeProperties properties) {
 		this.properties=properties;
 	}
 

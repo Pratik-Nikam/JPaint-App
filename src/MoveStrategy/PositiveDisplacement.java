@@ -1,7 +1,7 @@
 package MoveStrategy;
 
 
-import geometricshape.shapeProperties;
+import geometricshape.ShapeProperties;
 import model.interfaces.IShape;
 
 public class PositiveDisplacement implements IMoveStrategy {
@@ -10,7 +10,7 @@ public class PositiveDisplacement implements IMoveStrategy {
 	public void displace(IShape shape, int dx, int dy) {
 		// TODO Auto-generated method stub
 
-		shapeProperties properties=shape.getProperties();
+		ShapeProperties properties=shape.getProperties();
 
 		// TODO Auto-generated method stub
 		int x=properties.getX()+dx;

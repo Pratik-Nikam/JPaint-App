@@ -10,12 +10,12 @@ import model.setColorMap;
 import view.gui.PaintCanvas;
 
 public class Triangle extends shape {
-	private shapeProperties properties;
+	private ShapeProperties properties;
 	private setColorMap map= new setColorMap();
 	private int[] xCoord=new int[3];
 	private int[] yCoord=new int[3];
 	
-	public Triangle(shapeProperties properties) {
+	public Triangle(ShapeProperties properties) {
 		super(properties);
 		this.properties = properties;
 
@@ -43,20 +43,15 @@ public class Triangle extends shape {
 	}
 
 	@Override
-	public shapeProperties getProperties() {
+	public ShapeProperties getProperties() {
 		return properties;
 	}
 
 	@Override
-	public void setProperties(shapeProperties properties) {
+	public void setProperties(ShapeProperties properties) {
 		// TODO Auto-generated method stub
 		this.properties=properties;
-		xCoord[0]=properties.getX();
-		xCoord[1]=properties.getX()+properties.getWidth();
-		xCoord[2]=properties.getX();
-		yCoord[0]=properties.getY();
-		yCoord[1]=properties.getY()+properties.getHeight();
-		yCoord[2]=properties.getY()+properties.getHeight();
+		DrawOutlineForShapes.TraingleLogic(properties, xCoord, yCoord);
 
 	}
 

@@ -1,6 +1,6 @@
 package command;
 
-import geometricshape.shapeProperties;
+import geometricshape.ShapeProperties;
 import handler.Point;
 import model.interfaces.IShape;
 
@@ -27,7 +27,7 @@ public class ShapSelect implements ICommand {
         int end_pointY=point.getEndPointY2()+point.getHeight();
 
         for(IShape shape:shapedata.list()) {
-            shapeProperties properties = shape.getProperties();
+            ShapeProperties properties = shape.getProperties();
             System.out.println("=======STARDED SHAPE SELECTION ====");
             System.out.println("getX1 " + properties.getX1() + " " + properties.getWidth());
             System.out.println(" getX" + properties.getX() + " " + properties.getWidth());

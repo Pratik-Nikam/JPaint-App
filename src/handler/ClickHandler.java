@@ -1,19 +1,19 @@
 package handler;
 
 import command.*;
-import geometricshape.shapeProperties;
+import geometricshape.DrawOutlineForShapes;
+import geometricshape.ShapeProperties;
 import model.MouseMode;
 import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IApplicationState;
+import model.interfaces.IShape;
 import view.gui.PaintCanvas;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ClickHandler extends MouseAdapter {
 
@@ -50,7 +50,7 @@ public class ClickHandler extends MouseAdapter {
             ShapeShadingType shade = appState.getActiveShapeShadingType();
             ShapeColor shapeColor = appState.getActivePrimaryColor();
             ShapeType shapetype = appState.getActiveShapeType();
-            shapeProperties properties = new shapeProperties(point, shade, shapeColor, shapetype);
+            ShapeProperties properties = new ShapeProperties(point, shade, shapeColor, shapetype);
             ICommand C = new CreateShapeCommand(shapedata, properties, appState);
 
             try {
@@ -59,13 +59,18 @@ public class ClickHandler extends MouseAdapter {
                 e1.printStackTrace();
             }
         } else if ((appState.getActiveMouseMode().equals(MouseMode.SELECT))) {
-
+            shapedata.redraw();
             Point point = getPoints();
 
             ICommand C = new ShapSelect(shapedata, point, shapeselectdata);
-
+            shapeselectdata.clear();
             try {
                 C.run();
+
+                for(IShape a:shapeselectdata.list()) {
+                    IShape b=new DrawOutlineForShapes(a);
+                    b.Draw(canvas);
+                }
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

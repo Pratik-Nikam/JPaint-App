@@ -12,10 +12,10 @@ import java.util.EnumMap;
 
 public class Rectangle extends shape{
 
-	private shapeProperties properties;
+	private ShapeProperties properties;
 	private setColorMap map= new setColorMap();
 
-	public Rectangle(shapeProperties properties) {
+	public Rectangle(ShapeProperties properties) {
 		super(properties);
 		this.properties = properties;
 	}
@@ -36,7 +36,7 @@ public class Rectangle extends shape{
 	}
 
 	@Override
-	public shapeProperties getProperties() {
+	public ShapeProperties getProperties() {
 		return properties;
 	}
 }

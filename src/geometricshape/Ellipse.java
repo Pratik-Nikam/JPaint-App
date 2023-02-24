@@ -9,10 +9,10 @@ import java.awt.*;
 import java.util.EnumMap;
 
 public class Ellipse extends shape {
-	private shapeProperties properties;
+	private ShapeProperties properties;
 	private setColorMap map= new setColorMap();
 
-	public Ellipse(shapeProperties properties) {
+	public Ellipse(ShapeProperties properties) {
 		super(properties);
 		this.properties = properties;
 	}
@@ -32,7 +32,7 @@ public class Ellipse extends shape {
 	}
 
 	@Override
-	public shapeProperties getProperties() {
+	public ShapeProperties getProperties() {
 		return properties;
 	}
 
