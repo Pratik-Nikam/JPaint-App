@@ -1,5 +1,6 @@
 package main;
 
+import command.CopyListStorage;
 import command.ShapeSelectListStorage;
 import handler.ClickHandler;
 import command.IMainStorage;
@@ -21,12 +22,12 @@ public class Main  {
         PaintCanvas paintCanvas = new PaintCanvas();
         IMainStorage shapedata= new ShapeListStorage(new ArrayList<IShape>(), paintCanvas);
         IMainStorage shapeselectdata = new ShapeSelectListStorage(new ArrayList<IShape>(), paintCanvas);
+        IMainStorage copyshapedata = new CopyListStorage(new ArrayList<IShape>(), paintCanvas);
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-        IJPaintController controller = new JPaintController(uiModule, appState);
+        IJPaintController controller = new JPaintController(uiModule, appState,shapeselectdata, copyshapedata);
         paintCanvas.addMouseListener(new ClickHandler(paintCanvas, appState,shapedata,shapeselectdata));
-
         controller.setup();
     }
 }
