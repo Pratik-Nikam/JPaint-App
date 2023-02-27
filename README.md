@@ -60,6 +60,29 @@ Design Patterns Used:
 2. Observer Pattern 
 3. Strategy Pattern (Movement strategy based on displacement)
 
+
+**Sprint 3**
+* Link:
+1. https://github.com/Pratik-Nikam/JPaint-App.git
+2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-3
+
+* Features and Explanation
+
+1. Copy Shapes: This feature is working fine.
+2. Paste Shapes: I selected the position of (20, 20) instead of (0, 0) for the paste operation because if the pasted shape is placed at the origin, the outline may not be entirely visible. Therefore, I opted to use the position of (20, 20) to avoid this issue. 
+3. Delete selected shapes: Working Fine
+4. Outline Selected shapes: The feature works well with ellipse and rectangle shapes, but when it comes to triangles, there is one minor issues as outline overlaps bit on the diagonal, so I am currently investigating and addressing this problem.
+
+
+New Design Patterns Used:
+3. Static Factory:
+Classes involved: IShapeFactory, CreateShapeFactory, IShape, shape
+* CreateShapeFactory I have created two methods create shape and 2 which 
+determines  which shape to create and which shape to copy based on what shape is expected.
+* IShapeFactory is the interface for static factory class.
+
+4. Builder Pattern in classes JPaintController, CopyCommand, PasteCommand and DeleteCommand
+
 ## Authors
 
 * **Developers**: Pratik Nikam
