@@ -2,11 +2,11 @@ package main;
 
 import command.CopyListStorage;
 import command.ShapeSelectListStorage;
+import controller.JPaintControllerBuilder;
 import handler.ClickHandler;
 import command.IMainStorage;
 import command.ShapeListStorage;
 import controller.IJPaintController;
-import controller.JPaintController;
 import model.interfaces.IShape;
 import model.persistence.ApplicationState;
 import view.gui.Gui;
@@ -26,7 +26,7 @@ public class Main  {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-        IJPaintController controller = new JPaintController(uiModule, appState, shapedata, shapeselectdata, copyshapedata);
+        IJPaintController controller = new JPaintControllerBuilder().setUiModule(uiModule).setApplicationState(appState).setShapedata(shapedata).setShapeselectdata(shapeselectdata).setCopyshapedata(copyshapedata).createJPaintController();
         paintCanvas.addMouseListener(new ClickHandler(paintCanvas, appState,shapedata,shapeselectdata));
         controller.setup();
     }

@@ -49,21 +49,21 @@ public class JPaintController implements IJPaintController {
         });
         uiModule.addEvent(EventName.COPY,()->{
             try {
-                new CopyCommand(shapeselectdata, copyshapedata).run();
+                new CopyCommandBuilder().setShapeselectdata(shapeselectdata).setCopyshapedata(copyshapedata).createCopyCommand().run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         uiModule.addEvent(EventName.PASTE,()->{
             try {
-                new PasteCommand(applicationState, shapedata, copyshapedata).run();
+                new PasteCommandBuilder().setApplicationState(applicationState).setShapedata(shapedata).setCopyshapedata(copyshapedata).createPasteCommand().run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         uiModule.addEvent(EventName.DELETE,()->{
             try {
-                new DeleteCommand(shapedata, shapeselectdata).run();
+                new DeleteCommandBuilder().setShapedata(shapedata).setShapeselectdata(shapeselectdata).createDeleteCommand().run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
