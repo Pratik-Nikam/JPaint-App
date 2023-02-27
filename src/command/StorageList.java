@@ -22,13 +22,11 @@ public class StorageList implements IMainStorage {
 	@Override
 	public void addShape(IShape shape) {
 		list.add(shape);
-
 	}
 
 	@Override
 	public void removeShape(IShape shape) {
 		list.remove(shape);
-
 	}
 
 	@Override

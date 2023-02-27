@@ -1,5 +1,6 @@
 package geometricshape;
 
+import command.IMainStorage;
 import model.ShapeType;
 import model.interfaces.IShape;
 import view.gui.PaintCanvas;
@@ -18,16 +19,17 @@ public class DrawOutlineForShapes extends DrawOutline {
 		
 		ShapeProperties properties=getOutline();
 		Graphics2D graphics2d = canvas.getGraphics2D();
+		Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+		graphics2d.setStroke(dashed);
 		
 		if(outline.ShapeName().equals(ShapeType.RECTANGLE)) {
-		graphics2d.drawRect(properties.getX(), properties.getY(), properties.getWidth(), properties.getHeight());
+		    graphics2d.drawRect(properties.getX(), properties.getY(), properties.getWidth(), properties.getHeight());
 		}else if(outline.ShapeName().equals(ShapeType.ELLIPSE)){
 		graphics2d.drawOval(properties.getX(), properties.getY(), properties.getWidth(), properties.getHeight());
 		}
 		else if(outline.ShapeName().equals(ShapeType.TRIANGLE)){
 			int xCoord[]=new int[3];
 			int yCoord[]=new int[3];
-
 			TraingleLogic(properties, xCoord, yCoord);
 			graphics2d.drawPolygon(xCoord, yCoord, 3);
 		}
@@ -50,9 +52,7 @@ public class DrawOutlineForShapes extends DrawOutline {
 		int height=coord.getHeight()+25;
 		ShapeProperties properties=new ShapeProperties(x, y,width,height, null, null, coord.getType());
 		return properties;
-		
 	}
-
 
 	@Override
 	public ShapeType ShapeName() {
@@ -66,16 +66,32 @@ public class DrawOutlineForShapes extends DrawOutline {
 
 	@Override
 	public void setProperties(ShapeProperties properties) {
+
 	}
 
 	@Override
 	public void positiveDisplacement(int dx, int dy) {
+
 	}
 
 	@Override
 	public void negativeDisplacement(int dx, int dy) {
+
 	}
 
+	@Override
+	public IShape copy(IShape shape) {
+		return null;
+	}
 
+	@Override
+	public void addtolist(IShape shape, IMainStorage shapedata) {
+
+	}
+
+	@Override
+	public void delete(IShape shape, IMainStorage shapedata) {
+
+	}
 }
 

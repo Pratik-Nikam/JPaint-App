@@ -5,10 +5,10 @@ import model.ShapeType;
 import model.interfaces.IApplicationState;
 import model.interfaces.IShape;
 
-public class CreateShapeFactory implements IshapeFactory {
+public class CreateShapeFactory implements IShapeFactory {
 
 	public IShape CreateShape(ShapeProperties properties, IApplicationState appState) {
-		IShape shape=null;
+		IShape shape = null;
 		ShapeType shapeType=appState.getActiveShapeType();
 		
 		if(shapeType.equals(ShapeType.RECTANGLE)) {
@@ -22,6 +22,19 @@ public class CreateShapeFactory implements IshapeFactory {
 			System.out.println(" Elipse Drawn");
 		}
 
+		return shape;
+	}
+	@Override
+	public IShape CreateCopy(ShapeProperties properties, ShapeType shapeType) {
+		IShape shape = null;
+
+		if(shapeType.equals(ShapeType.RECTANGLE)) {
+			shape=new Rectangle(properties);
+		}else if(shapeType.equals(ShapeType.TRIANGLE)) {
+			shape=new Triangle(properties);
+		}else if(shapeType.equals(ShapeType.ELLIPSE)){
+			shape=new  Ellipse(properties);
+		}
 		return shape;
 	}
 }

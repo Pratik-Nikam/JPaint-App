@@ -52,6 +52,7 @@ public class ShapeProperties {
 
     }
 
+
     public int getX() {
         return x;
     }
@@ -90,5 +91,9 @@ public class ShapeProperties {
 
     public ShapeType getType() {
         return shapeType;
+    }
+
+    public ShapeShadingType getShade() {
+        return shade;
     }
 }
