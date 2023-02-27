@@ -74,7 +74,7 @@ Design Patterns Used:
 4. Outline Selected shapes: The feature works well with ellipse and rectangle shapes, but when it comes to triangles, there is one minor issues as outline overlaps bit on the diagonal, so I am currently investigating and addressing this problem.
 
 
-New Design Patterns Used:
+* New Design Patterns Used (previous Command and Strategy):
 3. Static Factory:
 Classes involved: IShapeFactory, CreateShapeFactory, IShape, shape
 * CreateShapeFactory I have created two methods create shape and 2 which 
@@ -82,6 +82,9 @@ determines  which shape to create and which shape to copy based on what shape is
 * IShapeFactory is the interface for static factory class.
 
 4. Builder Pattern in classes JPaintController, CopyCommand, PasteCommand and DeleteCommand
+
+* Sprint 2 Feedback:
+Note: Regarding the observer pattern in Sprint 2, I would like to provide an update. It appears that I misunderstood its implementation.
 
 ## Authors
 
