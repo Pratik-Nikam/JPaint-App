@@ -2,11 +2,14 @@ package geometricshape;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.EnumMap;
 
+import command.IMainStorage;
 import model.ShapeColor;
 import model.ShapeType;
 //import model.setColorMap;
+import model.interfaces.IShape;
 import model.singleton;
 import view.gui.PaintCanvas;
 
@@ -55,6 +58,10 @@ public class Triangle extends shape {
 		this.properties=properties;
 		DrawOutlineForShapes.TraingleLogic(properties, xCoord, yCoord);
 
+	}
+
+	@Override
+	public void unGrouping(IShape shape, IMainStorage shapedata, ArrayList<IShape> clipboard) {
 	}
 
 }

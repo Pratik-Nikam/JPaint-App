@@ -79,5 +79,13 @@ public class JPaintController implements IJPaintController {
                 e.printStackTrace();
             }
         });
+
+        uiModule.addEvent(EventName.UNGROUP,()->{
+            try {
+                new UngroupShapes(shapedata,shapeselectdata,canvas).run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

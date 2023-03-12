@@ -7,6 +7,7 @@ import view.gui.PaintCanvas;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class DrawOutlineForShapes extends DrawOutline {
 
@@ -91,6 +92,11 @@ public class DrawOutlineForShapes extends DrawOutline {
 
 	@Override
 	public void delete(IShape shape, IMainStorage shapedata) {
+
+	}
+
+	@Override
+	public void unGrouping(IShape shape, IMainStorage shapedata, ArrayList<IShape> clipboard) {
 
 	}
 }

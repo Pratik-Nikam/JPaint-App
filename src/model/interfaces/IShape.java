@@ -5,6 +5,8 @@ import geometricshape.ShapeProperties;
 import model.ShapeType;
 import view.gui.PaintCanvas;
 
+import java.util.ArrayList;
+
 public interface IShape {
     void Draw(PaintCanvas canvas);
     ShapeType ShapeName();
@@ -19,4 +21,6 @@ public interface IShape {
     void addtolist(IShape shape, IMainStorage shapedata);
 
     void delete(IShape shape, IMainStorage shapedata);
+    
+    void unGrouping(IShape shape, IMainStorage shapedata , ArrayList<IShape> clipboard);
 }

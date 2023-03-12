@@ -152,8 +152,17 @@ public class shapeGroup implements IShape {
 			
 		}
 
-		
+	public ArrayList<IShape> getGroup() {
+		return group;
+	}
+	@Override
+	public void unGrouping(IShape shape, IMainStorage shapedata , ArrayList<IShape> clipboard) {
+		group.forEach(shapedata::addShape);
 
+		if(!clipboard.contains(shape)) {
+			clipboard.add(shape);}
+		shapedata.removeShape(shape);
+	}
 	
 
 }

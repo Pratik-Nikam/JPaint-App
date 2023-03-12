@@ -1,13 +1,16 @@
 package geometricshape;
 
 
+import command.IMainStorage;
 import model.ShapeColor;
 import model.ShapeType;
 //import model.setColorMap;
+import model.interfaces.IShape;
 import model.singleton;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.EnumMap;
 
 
@@ -40,5 +43,10 @@ public class Rectangle extends shape{
 	@Override
 	public ShapeProperties getProperties() {
 		return properties;
+	}
+
+	@Override
+	public void unGrouping(IShape shape, IMainStorage shapedata, ArrayList<IShape> clipboard) {
+
 	}
 }
