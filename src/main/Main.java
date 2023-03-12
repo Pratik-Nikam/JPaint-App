@@ -26,7 +26,7 @@ public class Main  {
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
         ApplicationState appState = new ApplicationState(uiModule);
-        IJPaintController controller = new JPaintControllerBuilder().setUiModule(uiModule).setApplicationState(appState).setShapedata(shapedata).setShapeselectdata(shapeselectdata).setCopyshapedata(copyshapedata).createJPaintController();
+        IJPaintController controller = new JPaintControllerBuilder().setUiModule(uiModule).setApplicationState(appState).setShapedata(shapedata).setShapeselectdata(shapeselectdata).setCopyshapedata(copyshapedata).setPaintCanvas(paintCanvas).createJPaintController();
         paintCanvas.addMouseListener(new ClickHandler(paintCanvas, appState,shapedata,shapeselectdata));
         controller.setup();
     }

@@ -2,6 +2,7 @@ package controller;
 
 import command.IMainStorage;
 import model.interfaces.IApplicationState;
+import view.gui.PaintCanvas;
 import view.interfaces.IUiModule;
 
 public class JPaintControllerBuilder {
@@ -10,6 +11,7 @@ public class JPaintControllerBuilder {
     private IMainStorage shapedata;
     private IMainStorage shapeselectdata;
     private IMainStorage copyshapedata;
+    private PaintCanvas canvas;
 
     public JPaintControllerBuilder setUiModule(IUiModule uiModule) {
         this.uiModule = uiModule;
@@ -37,6 +39,11 @@ public class JPaintControllerBuilder {
     }
 
     public JPaintController createJPaintController() {
-        return new JPaintController(uiModule, applicationState, shapedata, shapeselectdata, copyshapedata);
+        return new JPaintController(uiModule, applicationState, shapedata, shapeselectdata, copyshapedata, canvas);
+    }
+
+    public JPaintControllerBuilder setPaintCanvas(PaintCanvas canvas) {
+        this.canvas = canvas;
+        return this;
     }
 }

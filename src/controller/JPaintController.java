@@ -3,6 +3,7 @@ package controller;
 import command.*;
 import model.interfaces.IApplicationState;
 import view.EventName;
+import view.gui.PaintCanvas;
 import view.interfaces.IUiModule;
 
 import java.io.IOException;
@@ -13,13 +14,16 @@ public class JPaintController implements IJPaintController {
     IMainStorage shapeselectdata;
     IMainStorage copyshapedata;
     IMainStorage shapedata;
-    public JPaintController(IUiModule uiModule, IApplicationState applicationState, IMainStorage shapedata,IMainStorage shapeselectdata,IMainStorage copyshapedata) {
+    PaintCanvas canvas;
+
+    public JPaintController(IUiModule uiModule, IApplicationState applicationState, IMainStorage shapedata, IMainStorage shapeselectdata, IMainStorage copyshapedata, PaintCanvas canvas) {
 
         this.uiModule = uiModule;
         this.applicationState = applicationState;
         this.shapeselectdata= shapeselectdata;
         this.copyshapedata= copyshapedata;
         this.shapedata = shapedata;
+        this.canvas = canvas;
     }
 
     @Override
@@ -68,6 +72,12 @@ public class JPaintController implements IJPaintController {
                 e.printStackTrace();
             }
         });
-
+        uiModule.addEvent(EventName.GROUP,()->{
+            try {
+                new GroupShapes(shapedata, shapeselectdata, canvas).run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
