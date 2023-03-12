@@ -6,12 +6,13 @@ import java.util.EnumMap;
 
 import model.ShapeColor;
 import model.ShapeType;
-import model.setColorMap;
+//import model.setColorMap;
+import model.singleton;
 import view.gui.PaintCanvas;
 
 public class Triangle extends shape {
 	private ShapeProperties properties;
-	private setColorMap map= new setColorMap();
+//	private setColorMap map= new setColorMap();
 	private int[] xCoord=new int[3];
 	private int[] yCoord=new int[3];
 	
@@ -31,8 +32,9 @@ public class Triangle extends shape {
 	@Override
 	public void Draw(PaintCanvas canvas) {
 		Graphics2D graphics2d = canvas.getGraphics2D();
-		EnumMap<ShapeColor, Color> m=map.getMap();
-		graphics2d.setColor(m.get(properties.getColor()));
+//		EnumMap<ShapeColor, Color> m=map.getMap();
+//		graphics2d.setColor(m.get(properties.getColor()));
+		graphics2d.setColor(singleton.getInstance().getColor(properties.getColor()));
 		graphics2d.fillPolygon(xCoord,yCoord,3);
 	}
 

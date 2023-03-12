@@ -3,10 +3,11 @@ package model;
 import java.awt.*;
 import java.util.EnumMap;
 
-public class setColorMap {
-	EnumMap<ShapeColor, Color> map =new EnumMap<>(ShapeColor.class);
+public class singleton {
+	private static EnumMap<ShapeColor, Color> map =new EnumMap<>(ShapeColor.class);
+	private static singleton instance ;
 
-	public setColorMap() {
+	public singleton() {
 		super();
 		map.put(ShapeColor.BLACK, Color.black);
 		map.put(ShapeColor.BLUE, Color.BLUE);
@@ -23,13 +24,20 @@ public class setColorMap {
 		
 		}
 
-	public EnumMap<ShapeColor, Color> getMap() {
-		return map;
+//	public EnumMap<ShapeColor, Color> getMap() {
+//		return map;
+//	}
+
+
+	public Color getColor(ShapeColor color) {
+		return map.get(color);
 	}
 
-	
-	
-	
-	
-	
+	public static singleton getInstance() {
+		if(instance == null)
+		{
+			instance = new singleton();
+		}
+		return instance;
+	}
 }
