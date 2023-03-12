@@ -48,30 +48,29 @@ public class shapeGroup implements IShape {
 	}
 
 	public void boundary() {
-		int boundary[]=new int[4];
-		int sz=group.size();
-		int x1[]=new int[sz];
-		int x2[]=new int[sz];
-		int[] y1=new int[sz];
-		int[] y2=new int[sz];
+		int outerline=group.size();
+		int startX[]=new int[outerline];
+		int endX[]=new int[outerline];
+		int[] startY=new int[outerline];
+		int[] endY=new int[outerline];
 		
 		int i=0;
 		for(IShape shape:group) {
-			x1[i]=shape.getProperties().getX();
+			startX[i]=shape.getProperties().getX();
 			
-			x2[i]=shape.getProperties().getX()+shape.getProperties().getWidth();
+			endX[i]=shape.getProperties().getX()+shape.getProperties().getWidth();
 			
-			y1[i]=shape.getProperties().getY();
+			startY[i]=shape.getProperties().getY();
 			
-			y2[i]=shape.getProperties().getY()+shape.getProperties().getHeight();
+			endY[i]=shape.getProperties().getY()+shape.getProperties().getHeight();
 			
 			i=i+1;
 		}
 		
-		 int minx1 = getMinValue(x1);
-		 int maxx2= getMaxValue(x2);
-		 int miny1 = getMinValue(y1);
-		 int maxy2= getMaxValue(y2);
+		 int minx1 = getMinValue(startX);
+		 int maxx2= getMaxValue(endX);
+		 int miny1 = getMinValue(startY);
+		 int maxy2= getMaxValue(endY);
 		 
 		 int array[]=new int[4];
 		 array[0]=minx1;
@@ -106,7 +105,6 @@ public class shapeGroup implements IShape {
 		public void negativeDisplacement(int dx, int dy) {
 			for(IShape shape:group) {
 				shape.negativeDisplacement(dx, dy);
-				
 			}
 			boundary();
 			
@@ -138,7 +136,6 @@ public class shapeGroup implements IShape {
 			}
 			return new shapeGroup(list);
 		}
-
 
 		@Override
 		public void delete(IShape shape, IMainStorage shaperepository) {

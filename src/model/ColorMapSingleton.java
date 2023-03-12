@@ -3,12 +3,15 @@ package model;
 import java.awt.*;
 import java.util.EnumMap;
 
-public class singleton {
+// Here have used Singleton pattern to handle colors.
+public class ColorMapSingleton {
 	private static EnumMap<ShapeColor, Color> map =new EnumMap<>(ShapeColor.class);
-	private static singleton instance ;
+	private static ColorMapSingleton instance ;
 
-	public singleton() {
+	// below is the private constructor, so that object is not created from outside this class.
+	private ColorMapSingleton() {
 		super();
+		// here assigning the values to the map, when the object is created.
 		map.put(ShapeColor.BLACK, Color.black);
 		map.put(ShapeColor.BLUE, Color.BLUE);
 		map.put(ShapeColor.RED, Color.RED);
@@ -24,19 +27,18 @@ public class singleton {
 		
 		}
 
-//	public EnumMap<ShapeColor, Color> getMap() {
-//		return map;
-//	}
-
-
 	public Color getColor(ShapeColor color) {
 		return map.get(color);
 	}
 
-	public static singleton getInstance() {
+	//here is the static method which when called will return this class's object.
+	// when this class is instantiated for the first time, instance of this class is returned,
+	// and when called again, the reference to the previous object is returned instead of new object.
+	public static ColorMapSingleton getInstance() {
+		// condition to handle that the instance for this class is created just once.
 		if(instance == null)
 		{
-			instance = new singleton();
+			instance = new ColorMapSingleton();
 		}
 		return instance;
 	}
