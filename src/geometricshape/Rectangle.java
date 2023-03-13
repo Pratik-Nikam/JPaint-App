@@ -10,7 +10,7 @@ import view.gui.PaintCanvas;
 import java.awt.*;
 import java.util.ArrayList;
 
-
+// this class is called when action related to Rectangle shape takes place on the UI
 public class Rectangle extends shape{
 
 	private ShapeProperties properties;

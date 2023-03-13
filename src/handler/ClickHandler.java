@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 // this class is used to capture the x and y points on the canvas on mouse click.
+// have used command pattern here.
 public class ClickHandler extends MouseAdapter {
 
     PaintCanvas canvas;

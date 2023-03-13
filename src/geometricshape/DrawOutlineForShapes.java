@@ -9,6 +9,7 @@ import view.gui.PaintCanvas;
 import java.awt.*;
 import java.util.ArrayList;
 
+// here created this class to create a outline for the shapes which are selected.
 public class DrawOutlineForShapes extends DrawOutline {
 
 	public DrawOutlineForShapes(IShape outline) {

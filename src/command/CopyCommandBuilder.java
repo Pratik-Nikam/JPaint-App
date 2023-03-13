@@ -1,5 +1,6 @@
 package command;
 
+// uses command pattern here
 public class CopyCommandBuilder {
     private IMainStorage shapeselectdata;
     private IMainStorage copyshapedata;

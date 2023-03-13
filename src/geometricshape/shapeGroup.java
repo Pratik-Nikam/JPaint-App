@@ -10,11 +10,13 @@ import view.gui.PaintCanvas;
 import java.util.ArrayList;
 import java.util.UUID;
 
+// defined below class to handle shapes that are to be part of a group.
 public class shapeGroup implements IShape {
 	ArrayList<IShape> group=new ArrayList<>();
 	private  UUID uuid=UUID.randomUUID();
 	private  String Id=uuid.toString();
 	ShapeProperties properties;
+
 	public shapeGroup(ArrayList<IShape> clipboard) {
 		for(IShape shape:clipboard) {
 			group.add(shape);
@@ -47,6 +49,7 @@ public class shapeGroup implements IShape {
 
 	}
 
+	// this calculates the border for the shapes selected for grouping.
 	public void boundary() {
 		int outerline=group.size();
 		int startX[]=new int[outerline];
@@ -67,10 +70,10 @@ public class shapeGroup implements IShape {
 			i=i+1;
 		}
 		
-		 int minx1 = getMinValue(startX);
-		 int maxx2= getMaxValue(endX);
-		 int miny1 = getMinValue(startY);
-		 int maxy2= getMaxValue(endY);
+		 int minx1 = getMinimumVal(startX);
+		 int maxx2= getMaximumVal(endX);
+		 int miny1 = getMinimumVal(startY);
+		 int maxy2= getMaximumVal(endY);
 		 
 		 int array[]=new int[4];
 		 array[0]=minx1;
@@ -82,17 +85,18 @@ public class shapeGroup implements IShape {
 		 setProperties(properties);
 	}
 
-	public int getMaxValue(int[] numbers){
+	public int getMaximumVal(int[] numbers){
 		  int maxValue = numbers[0];
 		  for(int i=1;i < numbers.length;i++){
 		    if(numbers[i] > maxValue){
 		      maxValue = numbers[i];
+
 		    }
 		  }
 		  return maxValue;
 		}
 
-		public int getMinValue(int[] numbers){
+		public int getMinimumVal(int[] numbers){
 		  int minValue = numbers[0];
 		  for(int i=1;i<numbers.length;i++){
 		    if(numbers[i] < minValue){
@@ -114,9 +118,9 @@ public class shapeGroup implements IShape {
 	public IShape copy(IShape shape) {
 
 		ArrayList<IShape> list=new ArrayList<IShape>();
-		for(IShape sh:group) {
-			IShape s=sh.copy(sh);
-			list.add(s);
+		for(IShape iShape:group) {
+			IShape copiedShape = iShape.copy(iShape);
+			list.add(copiedShape);
 		}
 		return new shapeGroup(list);
 	}
@@ -130,9 +134,9 @@ public class shapeGroup implements IShape {
 
 		public shapeGroup IShape() {
 			ArrayList<IShape> list=new ArrayList<IShape>();
-			for(IShape sh:group) {
-				IShape s=sh.copy(sh);
-				list.add(s);
+			for(IShape iShape:group) {
+				IShape shape=iShape.copy(iShape);
+				list.add(shape);
 			}
 			return new shapeGroup(list);
 		}

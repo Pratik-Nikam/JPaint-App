@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-
+// here is the class where we are storing the shape object in a list after we add or remove a shape on the UI.
 public class ShapeListStorage extends StorageList {
 
 	public ShapeListStorage(ArrayList<IShape> list, PaintCanvas canvas) {
@@ -22,9 +22,9 @@ public class ShapeListStorage extends StorageList {
 	        graphics2d.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
 	        list.add(shape);
-			for(IShape s: list) {
-				System.out.println("Inside List Loop " );
-				s.Draw(canvas);
+			for(IShape ishape : list) {
+				System.out.println(" Inside List Loop " );
+				ishape.Draw(canvas);
 			}
 			System.out.println("LIST SIZE  : "+list.size());
 		}
@@ -36,17 +36,16 @@ public class ShapeListStorage extends StorageList {
 		graphics2d.setColor(Color.WHITE);
         graphics2d.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-		for(IShape s: list) {
-			s.Draw(canvas);
+		for(IShape ishape: list) {
+			ishape.Draw(canvas);
 		}
 		System.out.println(list.size());
 	}
 
 	@Override
 	public boolean contains(IShape shape){
-		// TODO Auto-generated method stub
-		for(IShape s:list) {
-			if(shape.equals(s)) {
+		for(IShape ishape : list) {
+			if(shape.equals(ishape)) {
 				return true;
 			}
 		}

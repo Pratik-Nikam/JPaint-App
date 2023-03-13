@@ -6,7 +6,7 @@ public class RedoCommand implements ICommand {
 
 	@Override
 	public void run() throws IOException {
-		CommandHistory.redo();
+		CommandHistory.redoButton();
 	}
 	@Override
 	public void undo() {

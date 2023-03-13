@@ -11,7 +11,7 @@ import model.interfaces.IShape;
 import model.ColorMapSingleton;
 import view.gui.PaintCanvas;
 
-
+// this class is called when action related to Triangle shape takes place on the UI
 public class Triangle extends shape {
 	private ShapeProperties properties;
 

@@ -24,8 +24,8 @@ public class CopyCommand implements ICommand, IUndoable {
 	public void redo() {
 		try {
 			run();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
 	}
 

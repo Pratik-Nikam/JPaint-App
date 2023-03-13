@@ -5,7 +5,7 @@ import model.ShapeColor;
 import model.ShapeShadingType;
 import model.ShapeType;
 
-
+// created a properties class to store properties
 public class ShapeProperties {
     Point point;
     ShapeShadingType shade;
