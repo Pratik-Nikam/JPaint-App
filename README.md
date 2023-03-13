@@ -86,6 +86,24 @@ determines  which shape to create and which shape to copy based on what shape is
 * Sprint 2 Feedback:
 Note: Regarding the observer pattern in Sprint 2, I would like to provide an update. It appears that I misunderstood its implementation.
 
+**Sprint 4**
+* Link:
+1. https://github.com/Pratik-Nikam/JPaint-App.git
+2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-4
+
+* Features and Explanation
+
+1. Group Shapes: After clicking the selected shapes it groups the shape. When selected in the boundry area it will display the boundry. Multiple group select has issue (Nested grouping is not working as expected)  
+2. Ungroup Shapes: This feature is working fine.
+3. Undo/Redo functionality works as expected with group/ungroup
+
+
+* New Design Patterns Used :
+5. Singleton Design Pattern:
+   Classes involved: ColorMapSingleton
+* This helps to have only single instance of class. No new object creation is necessary everytime. Instance of class will be returned.
+
+
 ## Authors
 
 * **Developers**: Pratik Nikam
