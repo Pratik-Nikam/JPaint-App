@@ -104,6 +104,15 @@ Note: Regarding the observer pattern in Sprint 2, I would like to provide an upd
 * This helps to have only single instance of class. No new object creation is necessary everytime. Instance of class will be returned.
 
 
+**Final**
+* Design Patterns Used
+1. Command Pattern
+2. Strategy Pattern
+3. Abstract Factory
+4. Builder Pattern
+5. Singleton Pattern
+
+
 ## Authors
 
 * **Developers**: Pratik Nikam
