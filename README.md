@@ -17,7 +17,7 @@ Note: I have created feature branch name Sprint-1 for sprint 1 purpose and to ma
 
 ### Project Features
 ---
-* **Sprint 1**
+**Sprint 1**
 * Link: 
 1. https://github.com/Pratik-Nikam/JPaint-App.git
 2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-1
@@ -42,7 +42,7 @@ array list where have handled code to call draw method of that shape object.
 2. co-ordinate object removed from click handler
 
 
-* **Sprint 2**
+**Sprint 2**
 * Link: 
 1. https://github.com/Pratik-Nikam/JPaint-App.git
 2. https://github.com/Pratik-Nikam/JPaint-App/tree/SPRINT-2
