@@ -31,8 +31,8 @@ public class StorageList implements IMainStorage {
 
 	@Override
 	public boolean contains(IShape shape){
-		for(IShape s:list) {
-			if(shape.equals(s)) {
+		for(IShape iShape:list) {
+			if(shape.equals(iShape)) {
 				return true;
 			}
 		}
@@ -53,8 +53,8 @@ public class StorageList implements IMainStorage {
 	@Override
 	public ArrayList<IShape> list() {
 		ArrayList<IShape> copy=new ArrayList<IShape>();
-		for(IShape a:list) {
-			copy.add(a);
+		for(IShape shape:list) {
+			copy.add(shape);
 		}
 		return copy;
 	}
@@ -75,8 +75,8 @@ public class StorageList implements IMainStorage {
 		graphics2d.setColor(Color.WHITE);
         graphics2d.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         
-        for(IShape s: list) {
-			s.Draw(canvas);
+        for(IShape shape: list) {
+			shape.Draw(canvas);
 		}
 	}
 }

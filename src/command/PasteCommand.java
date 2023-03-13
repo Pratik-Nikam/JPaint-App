@@ -45,24 +45,13 @@ public class PasteCommand implements ICommand, IUndoable {
 	@Override
 	public void run() throws IOException {
 		System.out.println(copyshapedata.list() + "inside copy data execution");
-//		for(IShape shape:copyshapedata.list()) {
-//			IShape copy=shape.copy(shape);
-//			copylist.add(copy);
-//			shapedata.addShape(copy);
-//			}
-//		System.out.println(shapedata.list());
-//		CommandHistory.add(this);
-
-
 			for(IShape shape:copyshapedata.list()) {
-
 				IShape copy=shape.copy(shape);
 				System.out.println(copy.equals(shape));
 				copylist.add(copy);
 				shapedata.addShape(copy);
 			}
 			System.out.println(shapedata.list());
-
 			CommandHistory.add(this);
 		}
 	}

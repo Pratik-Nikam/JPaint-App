@@ -8,13 +8,11 @@ import view.gui.PaintCanvas;
 
 
 import java.util.ArrayList;
-import java.util.UUID;
+
 
 // defined below class to handle shapes that are to be part of a group.
 public class shapeGroup implements IShape {
 	ArrayList<IShape> group=new ArrayList<>();
-	private  UUID uuid=UUID.randomUUID();
-	private  String Id=uuid.toString();
 	ShapeProperties properties;
 
 	public shapeGroup(ArrayList<IShape> clipboard) {
@@ -85,6 +83,7 @@ public class shapeGroup implements IShape {
 		 setProperties(properties);
 	}
 
+	//referred below calculations logic from internet
 	public int getMaximumVal(int[] numbers){
 		  int maxValue = numbers[0];
 		  for(int i=1;i < numbers.length;i++){
